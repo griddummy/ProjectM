@@ -9,8 +9,12 @@ public class DammagedEvent : MonoBehaviour {
     Color colorOrigin1;
     Color colorOrigin2;
 
+	public GameObject damage;
+	GameObject Weapon;
 
     Animator animator;
+
+	float playspeed;
 
 	int Damaged1or2;
 
@@ -20,6 +24,9 @@ public class DammagedEvent : MonoBehaviour {
 
         colorOrigin1 = Color1.material.color;
         colorOrigin2 = Color2.material.color;
+
+		Weapon = GameObject.FindGameObjectWithTag ("Weapon");
+		playspeed = animator.speed;
 
     }
 	void OnTriggerEnter (Collider col){
@@ -37,8 +44,9 @@ public class DammagedEvent : MonoBehaviour {
 
 	IEnumerator GIGIGIG(){ // 타격감을위한경직
 		//Time.timeScale = 0.05f;
-		animator.speed = 0f;
+		//animator.speed = 0.1f;
 		Damaged1or2 = Random.Range (-10, 10);
+		//Instantiate (damage, Weapon.transform.position, Weapon.transform.rotation);
 
 		//Color colorOrigin1 = Color1.material.color;
 		//Color colorOrigin2 = Color2.material.color;
@@ -52,8 +60,6 @@ public class DammagedEvent : MonoBehaviour {
 
 
 			//Colar1.material.color = Color.Lerp (Color.red, new Color (0, 212f / 255f, 225f / 255f, 255f / 255f), Mathf.PingPong (Time.time, 1));
-//			Color1.material.color = new Color (0, 212f / 255f, 225f / 255f, 255f / 255f);
-//			Color2.material.color = new Color (0, 212f / 255f, 225f / 255f, 255f / 255f);
 			transform.position = transform.position + new Vector3 (-0.05f, 0, -0.05f);
 		}
 		else if (Damaged1or2 < -5) {
@@ -63,20 +69,22 @@ public class DammagedEvent : MonoBehaviour {
 			//yield return new WaitForSeconds (0.1f);
 			yield return new WaitForSeconds (0.05f);
 
-
-//			Color1.material.color = new Color (0, 212f / 255f, 225f / 255f, 255f / 255f);
-//			Color2.material.color = new Color (0, 212f / 255f, 225f / 255f, 255f / 255f);
 			transform.position = transform.position + new Vector3 (0.05f, 0, 0.05f);
 		}
+
 		//Time.timeScale = 1;
 		Color1.material.color = colorOrigin1;
 		Color2.material.color = colorOrigin2;
-		animator.speed = 1f;
+		//animator.speed = this.playspeed * 1.2f;
+
+		yield return new WaitForSeconds (0.3f);
+		//animator.speed = playspeed;
+		//animator.speed = this.playspeed * 1f;
+
 
 	}
 	//00D4FFFF
 	// Update is called once per frame
 	void Update () {
-	
 	}
 }
