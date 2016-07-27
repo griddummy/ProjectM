@@ -12,6 +12,6 @@ public class BulletDelete : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Destroy (gameObject, 1.5f);
+		Destroy (gameObject, 7f);
 	}
 }
