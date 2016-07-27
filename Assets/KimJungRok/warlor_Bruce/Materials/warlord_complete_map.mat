@@ -38,7 +38,7 @@ Material:
       data:
         first:
           name: _BaseLight
-        second: 0.34
+        second: 0
       data:
         first:
           name: _AO
@@ -51,7 +51,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.49264705, g: 0, b: 0, a: 1}
+        second: {r: 0.62728184, g: 0.44852942, b: 1, a: 1}
       data:
         first:
           name: _TreeInstanceColor

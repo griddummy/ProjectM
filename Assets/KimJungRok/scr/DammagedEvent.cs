@@ -52,8 +52,8 @@ public class DammagedEvent : MonoBehaviour {
 		//Color colorOrigin2 = Color2.material.color;
 		if (Damaged1or2 >= -5) {
 
-			Color1.material.color = Color.red;
-			Color2.material.color = Color.red;
+			Color1.material.color = Color.magenta;
+			Color2.material.color = Color.magenta;
 			transform.position = transform.position + new Vector3 (0.05f, 0, 0.05f);
 			//yield return new WaitForSeconds (0.1f);
 			yield return new WaitForSeconds (0.05f);
