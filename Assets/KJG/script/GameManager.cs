@@ -1,41 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : ScriptableObject {
 
-    private static GameManager m_instance;    
+    public enum GAME_STATE { MENU, HOME, GAME }
+
+    private GAME_STATE m_GameState;
+
+    private static GameManager m_instance;
 
     public static GameManager instance{
         get
         {
             if(m_instance == null)
             {
-                m_instance = FindObjectOfType<GameManager>();
-                if(m_instance == null)
-                {
-                    GameObject obj = new GameObject("Logic");
-                    obj.AddComponent<GameManager>();
-                }
+                m_instance = CreateInstance<GameManager>();
             }
             return m_instance;
         }
     }
 
-    void Awake()
+    void OnEnable() // 초기화
     {
-        if(m_instance == null)
-        {
-            m_instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-        // 초기화
-
+        m_GameState = GAME_STATE.MENU;
     }
-
-
 }
