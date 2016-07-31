@@ -9,8 +9,12 @@ public class DammagedEvent : MonoBehaviour {
     Color colorOrigin1;
     Color colorOrigin2;
 
-	public GameObject damage;
-	GameObject Weapon;
+	//public GameObject damage;
+	//GameObject Weapon;
+	public GameObject Effect;
+
+
+	//public float CurrentBossHP;
 
     Animator animator;
 
@@ -25,14 +29,14 @@ public class DammagedEvent : MonoBehaviour {
         colorOrigin1 = Color1.material.color;
         colorOrigin2 = Color2.material.color;
 
-		Weapon = GameObject.FindGameObjectWithTag ("Weapon");
+		//Weapon = GameObject.FindGameObjectWithTag ("Weapon");
 		playspeed = animator.speed;
 
     }
 	void OnTriggerEnter (Collider col){
 
 		if (col.gameObject.tag == ("Weapon")) {
-			
+			Instantiate (Effect, col.transform.position, Random.rotation);
 			//Debug.Log ("hit");
 
 			StartCoroutine (GIGIGIG ());
@@ -45,15 +49,16 @@ public class DammagedEvent : MonoBehaviour {
 	IEnumerator GIGIGIG(){ // 타격감을위한경직
 		//Time.timeScale = 0.05f;
 		//animator.speed = 0.1f;
+
 		Damaged1or2 = Random.Range (-10, 10);
-		//Instantiate (damage, Weapon.transform.position, Weapon.transform.rotation);
+
 
 		//Color colorOrigin1 = Color1.material.color;
 		//Color colorOrigin2 = Color2.material.color;
 		if (Damaged1or2 >= -5) {
 
-			Color1.material.color = Color.magenta;
-			Color2.material.color = Color.magenta;
+			Color1.material.color = Color.red;
+			Color2.material.color = Color.red;
 			transform.position = transform.position + new Vector3 (0.05f, 0, 0.05f);
 			//yield return new WaitForSeconds (0.1f);
 			yield return new WaitForSeconds (0.05f);

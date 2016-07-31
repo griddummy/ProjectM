@@ -210,7 +210,7 @@ MonoBehaviour:
   AudioSource: {fileID: 8256470}
   StartTime: 0.25
   StopTime: 1
-  Duration: 1
+  Duration: 7
   ForceAmount: 0
   ForceRadius: 0
   IsProjectile: 1
@@ -1044,7 +1044,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
   ForceModule:
-    enabled: 1
+    enabled: 0
     x:
       scalar: 3
       maxCurve:
@@ -1515,7 +1515,7 @@ ParticleSystem:
       minMaxState: 1
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 2
     type: 1
     collisionMode: 0
